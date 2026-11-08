@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@font-face{font-family:Roboto;src:url('/fuentes/Roboto-Light.ttf') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:Roboto;src:url('/fuentes/Roboto-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Roboto;src:url('/fuentes/Roboto-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:Roboto;src:url('/fuentes/Roboto-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+
+:root{font-family:Roboto,Inter,"Segoe UI",ui-sans-serif,system-ui,-apple-system,sans-serif;color:#1e293b;background:#f8fafc;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}*{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh}button,input,select{font:inherit}button{color:inherit}::selection{background:#ede9fe;color:#4c1d95}
+
+@layer base{html{ -webkit-font-smoothing:antialiased }body{background:#f8fafc;color:#1e293b;font-family:Roboto,Inter,ui-sans-serif,system-ui,sans-serif}}
+@layer components{
+  .card{background:#fff;border:1px solid #f1f5f9;border-radius:1rem;box-shadow:0 1px 3px rgba(76,29,149,.08),0 4px 14px rgba(76,29,149,.06)}
+  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;border-radius:.75rem;background:#6d28d9;padding:.625rem 1rem;color:white;font-weight:600;transition:background .2s}.btn-primary:hover{background:#5b21b6}.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+  .btn-accent{display:inline-flex;align-items:center;gap:.5rem;border-radius:.75rem;background:#facc15;padding:.625rem 1rem;color:#3b0764;font-weight:600}.btn-accent:hover{background:#eab308}
+  .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #e2e8f0;border-radius:.75rem;background:white;padding:.625rem 1rem;color:#475569;font-weight:500}.btn-ghost:hover{border-color:#c4b5fd;color:#6d28d9}
+  .input{width:100%;border:1px solid #e2e8f0;border-radius:.75rem;background:white;padding:.625rem .875rem;font-size:.875rem;outline:none;transition:.2s}.input:focus{border-color:#8b5cf6;box-shadow:0 0 0 2px #ede9fe}
+  .label{display:block;margin-bottom:.375rem;color:#64748b;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "soapyfun",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "start:api": "cd ../backend && python run.py",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "packageManager": "npm@10.9.4",
+  "dependencies": {
+    "@angular/common": "19.2.25",
+    "@angular/compiler": "19.2.25",
+    "@angular/core": "19.2.25",
+    "@angular/forms": "19.2.25",
+    "@angular/platform-browser": "19.2.25",
+    "@angular/router": "19.2.25",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "19.2.27",
+    "@angular/cli": "19.2.27",
+    "@angular/compiler-cli": "19.2.25",
+    "@tailwindcss/postcss": "4.3.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.7.3"
+  }
+}

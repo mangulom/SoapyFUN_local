@@ -1,0 +1,1842 @@
+
+> soapyfun@0.0.0 start
+> ng serve --host 127.0.0.1 --port 4200 --no-open
+
+[1m[33mComponent HMR has been enabled, see https://angular.dev/hmr for more info.[39m[22m
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m[36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m[36m15.34 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m[1m48.69 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mchunk-LLF5SRFV.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m[36m21.26 kB[39m[2m | [22m
+
+Application bundle generation complete. [4.345 seconds]
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m[36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m[36m15.34 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m[1m48.69 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mchunk-LLF5SRFV.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m[36m21.26 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.183 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.911 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module '../../../environments/environment' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/login/login.component.ts:5:28:
+[37m      5 │ import { environment } from [32m'../../../environments/environment'[37m;
+        ╵                             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "../../../environments/environment"[0m
+
+    src/app/pages/login/login.component.ts:5:28:
+[37m      5 │ import { environment } from [32m'../../../environments/environment'[37m;
+        ╵                             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m15.69 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.22 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-FXH5IKAE.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.34 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.775 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m15.69 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.22 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-FXH5IKAE.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.34 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.143 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m[36m15.69 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m[36m21.46 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.731 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m15.69 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.22 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.46 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.126 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m15.69 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.22 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.46 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.102 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m15.69 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.22 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.46 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.121 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.35 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m15.69 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.22 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.46 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.109 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.432 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'Section'. Did you mean 'Selection'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:29:20:
+[37m      29 │   navIconPath(item: [32mSection[37m): string {
+         ╵                     [32m~~~~~~~[0m
+
+  'Selection' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:21752:12:
+[37m      21752 │ declare var [32mSelection[37m: {
+            ╵             [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'Section'. Did you mean 'Selection'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:41:16:
+[37m      41 │     } as Record<[32mSection[37m, string>)[item];
+         ╵                 [32m~~~~~~~[0m
+
+  'Selection' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:21752:12:
+[37m      21752 │ declare var [32mSelection[37m: {
+            ╵             [32m~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.258 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'Section'. Did you mean 'Selection'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:29:20:
+[37m      29 │   navIconPath(item: [32mSection[37m): string {
+         ╵                     [32m~~~~~~~[0m
+
+  'Selection' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:21752:12:
+[37m      21752 │ declare var [32mSelection[37m: {
+            ╵             [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'Section'. Did you mean 'Selection'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:41:16:
+[37m      41 │     } as Record<[32mSection[37m, string>)[item];
+         ╵                 [32m~~~~~~~[0m
+
+  'Selection' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:21752:12:
+[37m      21752 │ declare var [32mSelection[37m: {
+            ╵             [32m~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.098 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'Section'. Did you mean 'Selection'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:29:20:
+[37m      29 │   navIconPath(item: [32mSection[37m): string {
+         ╵                     [32m~~~~~~~[0m
+
+  'Selection' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:21752:12:
+[37m      21752 │ declare var [32mSelection[37m: {
+            ╵             [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'Section'. Did you mean 'Selection'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:41:16:
+[37m      41 │     } as Record<[32mSection[37m, string>)[item];
+         ╵                 [32m~~~~~~~[0m
+
+  'Selection' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:21752:12:
+[37m      21752 │ declare var [32mSelection[37m: {
+            ╵             [32m~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.40 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m16.72 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m50.30 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.46 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.432 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m16.49 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.824 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m [2m | [22m[1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m[2m | [22m[36m33.07 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.193 seconds]
+
+Stylesheet update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m [2m | [22m[1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m[2m | [22m[36m33.06 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.209 seconds]
+
+Stylesheet update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m16.49 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.904 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.395 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './pages/dashboard/dashboard.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:5:51:
+[37m      5 │ ...() => import([32m'./pages/dashboard/dashboard.component'[37m).then((m) =...
+        ╵                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./pages/dashboard/dashboard.component"[0m
+
+    src/app/app.routes.ts:3:53:
+[37m      3 │ ...() => import([32m'./pages/dashboard/dashboard.component'[37m).then((m) =...
+        ╵                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m33.06 kB[39m[2m | [22m
+[32mchunk-UKZM3M63.js[39m  [2m | [22m[2m-[22m              [2m | [22m [36m14.90 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m  [36m1.83 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m              [2m | [22m[36m183 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m [1m49.97 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-5BXITEDV.js[39m  [2m | [22m[2mapp-component[22m  [2m | [22m[36m136 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.381 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-M7WLUSJV.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m15.09 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m1.85 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-ZVZGBGTJ.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m136 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.436 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-MMRFLWOS.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m15.13 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m1.83 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-ONPDRJKQ.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m136 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.376 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m16.73 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.236 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m[36m33.20 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m16.43 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m[1m49.64 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-65C3VZU3.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m[36m21.56 kB[39m[2m | [22m
+[32mchunk-4643SLPV.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m5.52 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.675 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m16.54 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.475 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m16.49 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.349 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-CIWKJYZS.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m14.79 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m1.86 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-4O6M2G4Q.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.336 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.294 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './core/auth.guard' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:2:26:
+[37m      2 │ import { authGuard } from [32m'./core/auth.guard'[37m;
+        ╵                           [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./core/auth.guard"[0m
+
+    src/app/app.routes.ts:1:26:
+[37m      1 │ import { authGuard } from [32m'./core/auth.guard'[37m;
+        ╵                           [32m~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.380 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './core/auth.guard' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:2:26:
+[37m      2 │ import { authGuard } from [32m'./core/auth.guard'[37m;
+        ╵                           [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./core/auth.guard"[0m
+
+    src/app/app.routes.ts:1:26:
+[37m      1 │ import { authGuard } from [32m'./core/auth.guard'[37m;
+        ╵                           [32m~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.37 kB[39m[2m | [22m
+[32mchunk-RI52AAXP.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m14.56 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m  [36m2.15 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m50.08 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-65C3VZU3.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.56 kB[39m[2m | [22m
+[32mchunk-L3KL2I3U.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m  [36m6.58 kB[39m[2m | [22m
+[32mchunk-KYUJ763O.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.832 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-EUZLWNI2.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m14.50 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m2.15 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-W4FXLCQ4.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.524 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m [36m2.19 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.277 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.37 kB[39m[2m | [22m
+[32mchunk-EUZLWNI2.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m14.50 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m  [36m2.19 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m50.06 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-65C3VZU3.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.56 kB[39m[2m | [22m
+[32mchunk-L3KL2I3U.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m  [36m6.58 kB[39m[2m | [22m
+[32mchunk-W4FXLCQ4.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.235 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-N5RR5L5J.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m14.66 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-KYJQ223Z.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.472 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-2XXA6Y77.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m14.80 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-NFHVSKFJ.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.485 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-WLK6MQEP.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m14.80 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-F4NNSGBA.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.257 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.48 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m  [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-I7V7CRLZ.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m13.99 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+
+Application bundle generation complete. [1.113 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-F6GZONAD.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m14.01 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.920 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-R43EGEXL.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m14.91 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-BEXQWOC4.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.403 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-ZPVWQTL5.js[39m  [2m | [22m[2m-[22m            [2m | [22m [36m15.03 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m  [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mchunk-RVZNTKZY.js[39m  [2m | [22m[2mapp-component[22m[2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.408 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m2.22 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-KSUAZQAV.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m14.02 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.605 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m1.79 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mchunk-65C3VZU3.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m[36m21.56 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.503 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m  [36m2.19 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-KSUAZQAV.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m14.02 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.345 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.477 seconds]
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDuplicate member "dashboardMode" in class body[0m [duplicate-class-member]
+
+    src/app/app.component.ts:17:4:
+[37m      17 │     [32mdashboardMode[37m = signal(false);
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+  The original member "dashboardMode" is here:
+
+    src/app/app.component.ts:16:4:
+[37m      16 │     [32mdashboardMode[37m = signal(false);
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'dashboardMode'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:22:11:
+[37m      22 │   readonly [32mdashboardMode[37m = signal(false);
+         ╵            [32m~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.48 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m  [36m2.19 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m50.67 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-KSUAZQAV.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m14.02 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.392 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.435 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './pages/dashboard/dashboard.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:6:77:
+[37m      6 │ ...() => import([32m'./pages/dashboard/dashboard.component'[37m).then((m) =...
+        ╵                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./pages/dashboard/dashboard.component"[0m
+
+    src/app/app.routes.ts:4:79:
+[37m      4 │ ...() => import([32m'./pages/dashboard/dashboard.component'[37m).then((m) =...
+        ╵                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.001 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './pages/dashboard/dashboard.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:6:77:
+[37m      6 │ ...() => import([32m'./pages/dashboard/dashboard.component'[37m).then((m) =...
+        ╵                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./pages/dashboard/dashboard.component"[0m
+
+    src/app/app.routes.ts:4:79:
+[37m      4 │ ...() => import([32m'./pages/dashboard/dashboard.component'[37m).then((m) =...
+        ╵                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m36.16 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m84.71 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-Z5MIAP62.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m38.45 kB[39m[2m | [22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [1.324 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m36.54 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.065 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m36.83 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.567 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m36.83 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m85.37 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-Z5MIAP62.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m38.45 kB[39m[2m | [22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.430 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m36.83 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-ZTADKZPX.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m38.74 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.628 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m36.83 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-ZHA7C7JL.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m39.28 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.606 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m36.83 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-VOJBLKKN.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m40.16 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.631 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m36.83 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-7QOISOXO.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m40.72 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.691 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m36.83 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m85.37 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-7QOISOXO.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m40.72 kB[39m[2m | [22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.264 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m36.83 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m85.37 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-7QOISOXO.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m40.72 kB[39m[2m | [22m
+[32mchunk-XZYXHONR.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.46 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.294 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.786 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:63:2:
+[37m      63 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:2:
+[37m      69 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:31:
+[37m      69 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:127:4:
+[37m      127 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.925 seconds]
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mTS-998113: AdminLayoutComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/dashboard/dashboard.component.ts:10:26:
+[37m      10 │   imports: [CommonModule, [32mAdminLayoutComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:63:2:
+[37m      63 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:2:
+[37m      69 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:31:
+[37m      69 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8001: 'soapy-admin-layout' is not a known element:
+1. If 'soapy-admin-layout' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'soapy-admin-layout' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/dashboard/dashboard.component.ts:12:4:
+[37m      12 │     [32m<soapy-admin-layout>[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:127:4:
+[37m      127 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.883 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:64:2:
+[37m      64 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:70:2:
+[37m      70 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:70:31:
+[37m      70 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.472 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:64:2:
+[37m      64 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:70:2:
+[37m      70 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:70:31:
+[37m      70 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.598 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:64:2:
+[37m      64 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:70:2:
+[37m      70 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:70:31:
+[37m      70 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.621 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:63:2:
+[37m      63 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:2:
+[37m      69 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:31:
+[37m      69 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.475 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:63:2:
+[37m      63 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:2:
+[37m      69 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:31:
+[37m      69 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.370 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:63:2:
+[37m      63 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:2:
+[37m      69 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:31:
+[37m      69 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.595 seconds]
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mTS-998113: AdminLayoutComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/dashboard/dashboard.component.ts:10:26:
+[37m      10 │   imports: [CommonModule, [32mAdminLayoutComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:63:2:
+[37m      63 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:2:
+[37m      69 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:69:31:
+[37m      69 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8001: 'soapy-admin-layout' is not a known element:
+1. If 'soapy-admin-layout' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'soapy-admin-layout' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/dashboard/dashboard.component.ts:12:4:
+[37m      12 │     [32m<soapy-admin-layout>[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.461 seconds]
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mTS-998113: AdminLayoutComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/dashboard/dashboard.component.ts:10:26:
+[37m      10 │   imports: [CommonModule, [32mAdminLayoutComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8001: 'soapy-admin-layout' is not a known element:
+1. If 'soapy-admin-layout' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'soapy-admin-layout' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/dashboard/dashboard.component.ts:12:4:
+[37m      12 │     [32m<soapy-admin-layout>[37m
+         ╵     [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:123:4:
+[37m      123 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.527 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.412 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.399 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.494 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.231 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:123:4:
+[37m      123 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.541 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:123:4:
+[37m      123 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.806 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:129:4:
+[37m      129 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [1.508 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:129:4:
+[37m      129 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.400 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:129:4:
+[37m      129 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.546 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:2:
+[37m      67 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:67:31:
+[37m      67 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:129:4:
+[37m      129 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.494 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router, private readonly ro...
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:65:2:
+[37m      65 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:65:31:
+[37m      65 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:128:4:
+[37m      128 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.442 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:61:2:
+[37m      61 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2392: Multiple constructor implementations are not allowed.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:65:2:
+[37m      65 │   [32mconstructor[37m(private readonly router: Router) {}
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:65:31:
+[37m      65 │   constructor(private readonly [32mrouter[37m: Router) {}
+         ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mClasses cannot contain more than one constructor[0m
+
+    src/app/layout/admin-layout.component.ts:126:4:
+[37m      126 │     [32mconstructor[37m(router) {
+          ╵     [32m~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m36.73 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m85.28 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-P6MWXHLZ.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m40.43 kB[39m[2m | [22m
+[32mchunk-ELXGAIAE.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.63 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [1.260 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.791 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'today' does not exist on type 'AdminLayoutComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:20:372:
+[37m      20 │ ...iv><div class="header-date">{[32m{toda[37my}}</div><div class="header-s...
+         ╵                                 [32m~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [1.022 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'today' does not exist on type 'AdminLayoutComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/admin-layout.component.ts:20:372:
+[37m      20 │ ...iv><div class="header-date">{[32m{toda[37my}}</div><div class="header-s...
+         ╵                                 [32m~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m41.22 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m89.77 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-ODOQN3CK.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m41.94 kB[39m[2m | [22m
+[32mchunk-ELXGAIAE.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.63 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.488 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.11 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.410 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.24 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.792 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m41.24 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-4O6PLD4M.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m41.93 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.697 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.29 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.500 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.31 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.402 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.42 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.322 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m41.42 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-VTH3Q23A.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m42.06 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.559 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.36 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.556 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m41.36 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-KHSUA4ZA.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m42.06 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.486 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m41.36 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-QK7OSTGS.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m42.17 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.522 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m41.73 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.605 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m41.73 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m90.28 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-QK7OSTGS.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m42.17 kB[39m[2m | [22m
+[32mchunk-ELXGAIAE.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.63 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.447 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m42.84 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.705 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m42.84 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-D6NVLHPT.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m48.14 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.393 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m42.84 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-HVHT7B2V.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m53.32 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.017 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m42.70 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.922 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m [36m42.70 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m             [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mchunk-3C3BXZ6I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m [36m15.00 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m      [2m | [22m [1m91.25 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m
+[32mchunk-HVHT7B2V.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m [36m53.32 kB[39m[2m | [22m
+[32mchunk-ELXGAIAE.js[39m  [2m | [22m[2mlogin-component[22m    [2m | [22m [36m21.63 kB[39m[2m | [22m
+[32mchunk-WUE3NR4I.js[39m  [2m | [22m[2m-[22m                  [2m | [22m[36m183 bytes[39m[2m | [22m
+[32mchunk-GXKIC2JG.js[39m  [2m | [22m[2mapp-component[22m      [2m | [22m[36m106 bytes[39m[2m | [22m
+
+Application bundle generation complete. [0.464 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m42.72 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.793 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m42.79 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.044 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m44.55 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.952 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m44.55 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-NRWWYO23.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m53.68 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.905 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m44.64 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.910 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m               [2m | [22m[36m44.64 kB[39m[2m | [22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m              [2m | [22m[1mRaw size[22m
+[32mchunk-4PWYTTRG.js[39m  [2m | [22m[2mdashboard-component[22m[2m | [22m[36m53.71 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.783 seconds]
+
+Component update sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.808 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.515 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.605 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
