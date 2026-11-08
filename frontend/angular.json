@@ -73,11 +73,6 @@
                 "glob": "Roboto-*.ttf",
                 "input": "src/app/assets/fuentes",
                 "output": "/fuentes"
-              },
-              {
-                "glob": "logo.svg",
-                "input": "../",
-                "output": "/"
               }
             ],
             "styles": [

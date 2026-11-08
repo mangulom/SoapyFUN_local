@@ -10,7 +10,7 @@ type Section = 'Inicio' | 'Productos' | 'Recetas' | 'Insumos' | 'Compras' | 'Pro
   imports: [RouterOutlet, IntroComponent],
   template: `
     @if (showIntro()) {
-      <soapy-intro />
+      <soapy-intro></soapy-intro>
     } @else {
       <router-outlet />
     }
