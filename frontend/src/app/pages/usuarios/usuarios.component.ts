@@ -5,6 +5,8 @@ import { CrudDataService } from '../../core/services/crud-data.service';
 import { Usuario } from '../../core/models/crud.models';
 import { CrudModalComponent } from '../../shared/components/crud-modal/crud-modal.component';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'soapy-usuarios',
@@ -113,7 +115,7 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
                       <div class="font-bold text-slate-850">{{ usuario.nombre }}</div>
                     </div>
                   </td>
-                  <td class="py-3 px-4 font-mono text-slate-600">{{ usuario.email }}</td>
+                  <td class="py-3 px-4 font-mono text-slate-600">{{ usuario.email }}@if (usuario.empresaNombre) {<small class="block mt-1 font-sans text-[10px] text-slate-400">{{ usuario.empresaNombre }}</small>}</td>
                   <td class="py-3 px-4">
                     <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold" [ngClass]="{
                       'bg-purple-100 text-purple-800': usuario.rol === 'Administradora',
@@ -196,6 +198,20 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
             <input type="email" [(ngModel)]="formEmail" name="email" required placeholder="camila@soapyfun.local" class="form-input" />
           </div>
 
+          @if (esAdmin()) {
+            <div>
+              <label class="form-label" for="empresa-usuario">Empresa asignada</label>
+              <select id="empresa-usuario" [(ngModel)]="formEmpresaId" name="empresaId" class="form-input bg-white" [disabled]="cargandoEmpresas()">
+                <option [ngValue]="null">Sin empresa asignada</option>
+                @for (empresa of empresas(); track empresa.id) { <option [ngValue]="empresa.id">{{ empresa.name }}</option> }
+              </select>
+              @if (cargandoEmpresas()) { <small class="mt-1 block text-[10px] text-slate-400">Cargando empresas...</small> }
+              @if (errorEmpresas()) { <small class="mt-1 block text-[10px] text-rose-600">{{ errorEmpresas() }}</small> }
+            </div>
+          } @else if (editando && usuarioEmpresaActual) {
+            <div><label class="form-label">Empresa asignada</label><div class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600">{{ usuarioEmpresaActual }}</div><small class="mt-1 block text-[10px] text-slate-400">Solo un administrador puede cambiar la empresa.</small></div>
+          }
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="form-label">Rol en el Negocio *</label>
@@ -272,6 +288,14 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
 })
 export class UsuariosComponent {
   readonly dataService = inject(CrudDataService);
+  private readonly http = inject(HttpClient);
+  readonly empresas = signal<Array<{ id: number; name: string; is_active: boolean }>>([]);
+  readonly cargandoEmpresas = signal(false);
+  readonly errorEmpresas = signal('');
+  readonly esAdmin = signal(this.usuarioEsAdmin());
+  usuarioIdEmpresa: number | null = null;
+  formEmpresaId: number | null = null;
+  usuarioEmpresaActual = '';
 
   filtroTexto = '';
   filtroRol = 'Todos';
@@ -294,6 +318,28 @@ export class UsuariosComponent {
   formRol: Usuario['rol'] = 'Asistente de Producción';
   formActivo = true;
   formPassword = '';
+
+  constructor() {
+    if (this.esAdmin()) this.cargarEmpresas();
+  }
+
+  private usuarioEsAdmin(): boolean {
+    try {
+      const role = JSON.parse(localStorage.getItem('soapyfun_usuario') || '{}').rol;
+      return (typeof role === 'string' ? role : role?.nombre || '').toLowerCase().includes('admin');
+    } catch {
+      return false;
+    }
+  }
+
+  cargarEmpresas(): void {
+    this.cargandoEmpresas.set(true);
+    this.errorEmpresas.set('');
+    this.http.get<Array<{ id: number; name: string; is_active: boolean }>>('/api/empresas').subscribe({
+      next: (items) => { this.empresas.set(items.filter((company) => company.is_active)); this.cargandoEmpresas.set(false); },
+      error: (error) => { this.errorEmpresas.set(error?.error?.detail || 'No se pudieron cargar las empresas.'); this.cargandoEmpresas.set(false); },
+    });
+  }
 
   contarActivos(activo: boolean): number {
     return this.dataService.usuarios().filter((u) => u.activo === activo).length;
@@ -358,6 +404,8 @@ export class UsuariosComponent {
     this.formRol = 'Asistente de Producción';
     this.formActivo = true;
     this.formPassword = '';
+    this.formEmpresaId = this.empresas()[0]?.id ?? null;
+    this.usuarioEmpresaActual = '';
     this.modalAbierto = true;
   }
 
@@ -369,6 +417,9 @@ export class UsuariosComponent {
     this.formRol = u.rol;
     this.formActivo = u.activo;
     this.formPassword = '';
+    this.formEmpresaId = u.empresaId ?? null;
+    this.usuarioIdEmpresa = Number(u.id) || null;
+    this.usuarioEmpresaActual = u.empresaNombre || 'Sin empresa asignada';
     this.modalAbierto = true;
   }
 
@@ -389,6 +440,19 @@ export class UsuariosComponent {
         rol: this.formRol,
         activo: this.formActivo,
       });
+    }
+    const userCompany = this.formEmpresaId;
+    if (this.esAdmin() && this.editando && this.usuarioIdEmpresa !== null) {
+      this.http.patch(`/api/usuarios/${this.usuarioIdEmpresa}/empresa`, { company_id: userCompany }).subscribe({
+        next: (result: any) => {
+          this.usuarioEmpresaActual = result?.company_name || '';
+          this.modalAbierto = false;
+        },
+        error: (error) => {
+          this.dataService.notify('error', 'No se cambió la empresa', error?.error?.detail || 'No fue posible actualizar la empresa del usuario.');
+        },
+      });
+      return;
     }
     this.modalAbierto = false;
   }

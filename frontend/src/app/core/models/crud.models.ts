@@ -14,6 +14,10 @@ export interface Producto {
   icono?: string;
   tono?: 'lavender' | 'honey' | 'citrus' | 'rose' | 'mint';
   fechaCreacion: string;
+  fechaFabricacion?: string;
+  fechaVencimiento?: string;
+  vidaUtilDias?: number;
+  recetaId?: string;
 }
 
 export interface RecetaIngrediente {
@@ -38,6 +42,12 @@ export interface Receta {
   concentracionSosa: number; // % ej: 30%
   version: string; // ej: 'v3'
   fechaActualizacion: string;
+  tiempoCuretajeDias: number; // legado para datos existentes
+  tiempoCuretajeValor?: number;
+  tiempoCuretajeUnidad?: 'minutes' | 'hours' | 'days';
+  tiempoCuretajeMinutos?: number;
+  tiempoAntesVencimientoDias?: number;
+  vidaUtilDias: number; // compatibilidad: mismo valor que tiempoAntesVencimientoDias
   estado: 'Activa' | 'En prueba' | 'Archivada';
   ingredientesCount: number;
   notasSeguridad?: string;
@@ -168,4 +178,10 @@ export interface Usuario {
   fechaRegistro: string;
   ultimoAcceso: string;
   iniciales?: string;
+  empresaId?: number | null;
+  empresaNombre?: string | null;
+}
+
+export interface Empresa {
+  id: string; nombre: string; ruc?: string; dni?: string; direccion?: string; telefono?: string; email?: string; activa: boolean;
 }

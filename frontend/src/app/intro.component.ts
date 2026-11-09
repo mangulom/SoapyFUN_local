@@ -10,7 +10,7 @@ import { Component, OnInit, signal } from '@angular/core';
         <section class="intro-content">
           <img class="intro-logo" src="/icon.svg" alt="Icono SoapyFUN" width="96" height="96" />
           <h1>@for (letter of letters; track $index) {<span [class.fun-letter]="letter.fun" [style.animation-delay]="letter.delay + 's'">{{ letter.char }}</span>}</h1>
-          <p class="intro-subtitle">Jabonería artesanal inteligente</p>
+          <p class="intro-subtitle">Gesti&oacute;n de productos artesanales inteligente</p>
           <p class="intro-features">Fórmulas <i>|</i> Costos <i>|</i> Insumos <i>|</i> Clientes</p>
           <div class="intro-track"><div class="intro-progress"></div></div>
         </section>

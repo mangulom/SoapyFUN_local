@@ -1,0 +1,146 @@
+<div class="min-h-screen bg-[#fffdfa] font-sans text-ink">
+  <div class="bg-[#332b2b] px-4 py-2 text-center text-[10px] uppercase tracking-[.12em] text-[#fffaf7]">
+    Envío sin costo en pedidos desde S/ 180 <span class="mx-2 text-[#e4a8a5]">✦</span> Muestras de cortesía en cada compra
+  </div>
+
+  <header class="sticky top-0 z-20 flex h-[72px] items-center justify-between border-b border-transparent bg-[#fffdfa]/95 px-5 backdrop-blur md:h-20 md:px-[6vw]">
+    <a href="#inicio" class="flex items-center gap-2 font-display text-[25px] tracking-[-.06em]" aria-label="Lúmina, inicio">
+      <span class="flex h-7 w-7 items-center justify-center rounded-full border border-rose-deep font-display text-[22px] italic text-rose-deep">l</span>lúmina
+    </a>
+    <nav class="hidden items-center gap-10 text-[13px] text-[#544a47] md:flex" aria-label="Navegación principal">
+      <a class="transition hover:text-rose-deep" href="#tienda">Tienda</a><a class="transition hover:text-rose-deep" href="#ritual">Rituales</a><a class="transition hover:text-rose-deep" href="#historia">Nuestra historia</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button (click)="searchOpen.set(true)" class="grid h-9 w-9 place-items-center rounded-full transition hover:bg-cream" aria-label="Buscar productos">
+        <svg class="h-5 w-5 fill-none stroke-current stroke-[1.5]" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg>
+      </button>
+      <button (click)="cartOpen.set(true)" class="flex items-center gap-1.5 text-[12px]" aria-label="Abrir bolsa de compra">
+        <svg class="h-5 w-5 fill-none stroke-current stroke-[1.5]" viewBox="0 0 24 24"><path d="M5 8.5h14l-1 11H6l-1-11Z"></path><path d="M8.5 9V6.8a3.5 3.5 0 0 1 7 0V9"></path></svg><span class="hidden sm:inline">Bolsa</span><b class="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-rose-deep px-1 text-[10px] font-medium text-white">{{ cartCount() }}</b>
+      </button>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="grid min-h-[610px] overflow-hidden bg-cream md:grid-cols-2">
+      <div class="self-center px-6 py-20 md:px-[11vw] md:py-16">
+        <p class="eyebrow">Rituales que se sienten</p>
+        <h1 class="max-w-[500px] font-display text-[clamp(54px,6vw,91px)] leading-[.95] tracking-[-.055em]">Tu luz, <em class="font-medium text-rose-deep">en calma.</em></h1>
+        <p class="mt-7 max-w-[360px] text-[15px] leading-7 text-[#625855]">Formulaciones esenciales que convierten el cuidado diario en un momento solo tuyo.</p>
+        <a href="#tienda" class="mt-8 inline-flex min-h-12 items-center gap-6 bg-rose-deep px-6 text-[12px] text-white transition hover:-translate-y-0.5 hover:bg-[#8e4f5b]">Descubrir la colección <span>→</span></a>
+      </div>
+      <div class="hero-art min-h-[400px] md:min-h-[610px]" aria-label="Frasco de sérum Lúmina sobre fondo rosa" role="img">
+        <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div><div class="hero-shadow"></div>
+        <div class="hero-bottle"><div class="hero-dropper"></div><div class="hero-neck"></div><div class="hero-label"><span>lúmina</span><small>SÉRUM AURORA</small><i>30 ml</i></div></div>
+        <span class="hero-word">LUMINOSIDAD</span>
+      </div>
+    </section>
+
+    <section class="mx-5 grid grid-cols-3 border-b border-[#e5d9d3] py-4 md:mx-[6vw] md:py-6" aria-label="Beneficios de Lúmina">
+      <div class="flex items-center justify-center gap-1.5 text-center text-[8px] text-[#675b58] md:gap-3 md:text-[11px]"><span class="text-rose-deep">✦</span>Ingredientes conscientes</div>
+      <div class="flex items-center justify-center gap-1.5 text-center text-[8px] text-[#675b58] md:gap-3 md:text-[11px]"><span class="text-rose-deep">✦</span>Fórmulas veganas</div>
+      <div class="flex items-center justify-center gap-1.5 text-center text-[8px] text-[#675b58] md:gap-3 md:text-[11px]"><span class="text-rose-deep">✦</span>Empaques reciclables</div>
+    </section>
+
+    <section class="px-5 py-20 md:px-[6vw] md:py-28" id="tienda">
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div><p class="eyebrow">La colección</p><h2 class="font-display text-[clamp(44px,4.2vw,64px)] leading-none tracking-[-.05em]">Elige tu momento</h2></div>
+        <p class="max-w-[330px] text-[14px] leading-6 text-[#776d69]">Texturas delicadas y activos eficaces para crear una rutina que esperes cada día.</p>
+      </div>
+
+      <div class="mt-9 flex flex-col gap-4 border-b border-[#e5d9d3] pb-3 md:mt-12 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-wrap gap-x-5 gap-y-2" role="tablist" aria-label="Categorías de producto">
+          @for (category of categories(); track category) {
+            <button (click)="selectCategory(category)" class="border-b-2 pb-2 text-[12px] transition" [class.border-rose-deep]="selectedCategory() === category" [class.text-ink]="selectedCategory() === category" [class.font-semibold]="selectedCategory() === category" [class.border-transparent]="selectedCategory() !== category" [class.text-[#887d79]]="selectedCategory() !== category">{{ category }}</button>
+          }
+        </div>
+        <label class="self-end text-[11px] text-[#887d79]">Ordenar <select #sortSelect (change)="selectSort(sortSelect.value)" class="ml-1 bg-transparent text-[11px] text-ink outline-none"><option value="featured">Destacados</option><option value="low">Menor precio</option><option value="high">Mayor precio</option><option value="rating">Mejor valorados</option></select></label>
+      </div>
+
+      @if (error()) {
+        <p class="py-14 text-center text-sm text-[#9d4f55]">No pudimos cargar el catálogo. Verifica que el servidor API esté activo en el puerto 9000.</p>
+      } @else {
+        <div class="grid grid-cols-2 gap-x-3 gap-y-7 pt-7 sm:grid-cols-3 md:grid-cols-4 md:gap-x-6 md:gap-y-9">
+          @for (product of visibleProducts(); track product.id) {
+            <article>
+              <button (click)="openProduct(product)" class="product-art relative flex h-[215px] w-full items-center justify-center overflow-hidden bg-[#f3ece8] text-left sm:h-[270px] md:h-[335px]" [class]="'product-art ' + product.visual + ' relative flex h-[215px] w-full items-center justify-center overflow-hidden text-left sm:h-[270px] md:h-[335px]'">
+                @if (product.badge) { <span class="absolute left-3 top-3 z-[2] bg-[#fffdfa] px-2 py-1.5 text-[9px] uppercase tracking-[.07em] text-rose-deep">{{ product.badge }}</span> }
+                <div [class]="visualClass(product)"></div>
+              </button>
+              <div class="grid gap-1.5 pt-3.5">
+                <div class="flex justify-between"><span class="text-[9px] uppercase tracking-[.06em] text-[#958a85]">{{ product.category }}</span><span class="text-[9px] uppercase tracking-[.06em] text-[#958a85]">{{ product.size }}</span></div>
+                <div class="flex items-baseline justify-between gap-2"><button (click)="openProduct(product)" class="font-display text-[17px] tracking-[-.03em] hover:text-rose-deep">{{ product.name }}</button><span class="whitespace-nowrap text-[12px] font-semibold">S/ {{ product.price | number:'1.2-2' }}</span></div>
+                <div class="flex items-center justify-between"><span class="text-[11px] text-rose-deep">★ {{ product.rating }} <span class="text-[#9b918d]">({{ product.reviews }})</span></span><button (click)="addToCart(product)" class="grid h-7 w-7 place-items-center rounded-full bg-ink text-xl leading-none text-white transition hover:rotate-90 hover:bg-rose-deep" [attr.aria-label]="'Añadir ' + product.name + ' a la bolsa'">+</button></div>
+              </div>
+            </article>
+          } @empty { <p class="col-span-full py-12 text-center text-sm text-[#776d69]">No hay productos en esta categoría todavía.</p> }
+        </div>
+      }
+    </section>
+
+    <section class="grid min-h-[570px] bg-[#e8d2c9] md:grid-cols-2" id="ritual">
+      <div class="story-image relative min-h-[370px] overflow-hidden bg-[#c7948e] md:min-h-0"><div class="arch-shape"></div><p class="absolute bottom-8 left-8 z-[2] font-display text-2xl leading-none tracking-[.08em] text-white/80">UNA PAUSA<br>PARA TI</p></div>
+      <div class="self-center px-6 py-16 md:px-[9vw]">
+        <p class="eyebrow">Un ritual luminoso</p><h2 class="max-w-[480px] font-display text-[clamp(42px,4vw,61px)] leading-[.98] tracking-[-.05em]">La belleza empieza cuando bajas el ritmo.</h2>
+        <p class="my-7 max-w-[460px] leading-7 text-[#685956]">Nos inspiramos en la quietud de los pequeños rituales: vapor, texturas y aromas que devuelven a la piel —y a ti— a su centro.</p>
+        <a href="#tienda" class="border-b border-[#8a6863] pb-1.5 text-[12px]">Conoce el ritual Lúmina <span class="ml-5 text-rose-deep">→</span></a>
+      </div>
+    </section>
+
+    <section class="bg-cream px-5 py-20 text-center md:py-28" id="historia">
+      <p class="eyebrow">Notas de Lúmina</p><h2 class="font-display text-[clamp(42px,4.2vw,61px)] leading-none tracking-[-.05em]">Un poco de luz en tu bandeja.</h2>
+      <p class="mt-4 text-sm text-[#776d69]">Recibe rituales, novedades y un 10% de bienvenida.</p>
+      <form (ngSubmit)="completeNewsletter()" class="mx-auto mt-7 flex max-w-[440px] flex-col gap-2 sm:flex-row">
+        <input type="email" required [ngModel]="newsletterEmail()" (ngModelChange)="newsletterEmail.set($event)" name="email" class="h-12 min-w-0 flex-1 border border-[#e5d9d3] bg-[#fffdfa] px-4 text-sm outline-rose-deep" placeholder="Tu correo electrónico" />
+        <button class="min-h-12 bg-ink px-6 text-[12px] text-white transition hover:-translate-y-0.5" type="submit">Suscribirme</button>
+      </form>
+      <p class="mt-3 h-4 text-[12px] text-rose-deep">{{ newsletterMessage() }}</p>
+    </section>
+  </main>
+
+  <footer class="flex flex-col items-center gap-5 px-5 py-8 md:flex-row md:justify-between md:px-[6vw]">
+    <a href="#inicio" class="flex items-center gap-2 font-display text-[22px] tracking-[-.06em]"><span class="flex h-6 w-6 items-center justify-center rounded-full border border-rose-deep font-display text-lg italic text-rose-deep">l</span>lúmina</a>
+    <p class="text-[11px] text-[#8c817c]">Skincare esencial para volver a tu centro.</p><p class="text-[11px] text-[#8c817c]">© 2026 Lúmina Studio</p>
+  </footer>
+</div>
+
+@if (searchOpen()) {
+  <div class="fixed inset-0 z-30 bg-[#231d1b]/40 p-5" (click)="searchOpen.set(false)">
+    <div class="relative mx-auto mt-16 w-full max-w-[590px] bg-[#fffdfa] p-7 shadow-2xl md:mt-24 md:p-12" (click)="$event.stopPropagation()">
+      <button (click)="searchOpen.set(false)" class="absolute right-4 top-3 text-3xl font-light" aria-label="Cerrar búsqueda">×</button><p class="eyebrow">Buscar en la tienda</p>
+      <input #searchInput [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" name="search" autofocus class="w-full border-0 border-b border-ink bg-transparent py-3 font-display text-2xl outline-none" placeholder="¿Qué estás buscando?" />
+      <div class="mt-4">
+        @for (product of searchResults(); track product.id) { <button (click)="openProduct(product)" class="flex w-full items-center justify-between border-b border-[#e5d9d3] py-3 text-left"><strong class="font-medium">{{ product.name }}</strong><span class="text-[12px] text-[#776d69]">{{ product.category }} · S/ {{ product.price | number:'1.2-2' }}</span></button> }
+        @if (searchTerm() && !searchResults().length) { <p class="py-4 text-sm text-[#776d69]">No encontramos resultados.</p> }
+      </div>
+    </div>
+  </div>
+}
+
+@if (cartOpen()) {
+  <div class="fixed inset-0 z-30 bg-[#231d1b]/40" (click)="cartOpen.set(false)"></div>
+}
+<aside class="fixed right-0 top-0 z-40 flex h-full w-full max-w-[440px] flex-col bg-[#fffdfa] px-7 py-7 shadow-2xl transition-transform duration-300" [class.translate-x-full]="!cartOpen()" [class.translate-x-0]="cartOpen()" aria-label="Bolsa de compra">
+  <div class="flex items-center justify-between border-b border-[#e5d9d3] pb-5"><h2 class="font-display text-[29px] tracking-[-.04em]">Tu bolsa <span class="inline-grid h-[18px] min-w-[18px] -translate-y-1 place-items-center rounded-full bg-rose-deep px-1 font-sans text-[10px] text-white">{{ cartCount() }}</span></h2><button (click)="cartOpen.set(false)" class="text-3xl font-light" aria-label="Cerrar bolsa">×</button></div>
+  @if (cartCount()) {
+    <div class="grid gap-5 overflow-auto py-5">
+      @for (item of cart(); track item.id) {
+        <div class="grid grid-cols-[70px_1fr_auto] gap-3"><div [class]="'cart-thumb ' + item.visual"><div [class]="visualClass(item)"></div></div><div><h3 class="font-display text-lg">{{ item.name }}</h3><p class="mb-2 text-[11px] text-[#776d69]">{{ item.size }} · S/ {{ item.price | number:'1.2-2' }}</p><div class="flex items-center gap-3"><button (click)="updateQuantity(item.id, -1)" class="text-lg text-rose-deep">−</button><span class="min-w-2 text-center text-xs">{{ item.quantity }}</span><button (click)="updateQuantity(item.id, 1)" class="text-lg text-rose-deep">+</button></div></div><button (click)="removeFromCart(item.id)" class="self-start text-lg text-[#9c8982]" [attr.aria-label]="'Eliminar ' + item.name">×</button></div>
+      }
+    </div>
+    <div class="mt-auto border-t border-[#e5d9d3] pt-5"><div class="mb-5 flex justify-between text-[13px]"><span>Subtotal</span><strong>S/ {{ cartTotal() | number:'1.2-2' }}</strong></div><button (click)="checkout()" class="min-h-12 w-full bg-ink px-6 text-[12px] text-white">Finalizar compra</button><p class="mt-2 text-center text-[10px] text-[#776d69]">Envío e impuestos calculados al finalizar.</p></div>
+  } @else {
+    <div class="flex flex-1 flex-col items-center justify-center text-center font-display text-xl leading-snug text-[#776d69]"><span class="mb-3 text-2xl text-rose-deep">✦</span><p>Tu bolsa está esperando<br>sus nuevos favoritos.</p><button (click)="cartOpen.set(false)" class="mt-3 border-b border-ink pb-1 font-sans text-[12px] text-ink">Explorar la colección</button></div>
+  }
+</aside>
+
+@if (selectedProduct(); as product) {
+  <div class="fixed inset-0 z-50 grid place-items-center bg-[#231d1b]/50 p-4" (click)="closeProduct()">
+    <div class="relative grid max-h-[calc(100vh-32px)] w-full max-w-[750px] overflow-auto bg-[#fffdfa] md:grid-cols-2" (click)="$event.stopPropagation()">
+      <button (click)="closeProduct()" class="absolute right-3 top-2 z-10 text-3xl font-light" aria-label="Cerrar detalle">×</button>
+      <div [class]="'modal-art ' + product.visual"><div [class]="visualClass(product)"></div></div>
+      <div class="flex flex-col justify-center p-8 md:p-10"><p class="eyebrow">{{ product.category }} · {{ product.size }}</p><h2 class="font-display text-[42px] leading-none tracking-[-.04em]">{{ product.name }}</h2><span class="mt-2 text-[15px] font-semibold">S/ {{ product.price | number:'1.2-2' }}</span><span class="mt-2 text-[12px] text-rose-deep">★ {{ product.rating }} · {{ product.reviews }} reseñas</span><p class="my-6 text-[14px] leading-6 text-[#776d69]">{{ product.description }}</p><button (click)="addToCart(product)" class="mt-3 min-h-12 bg-ink px-6 text-[12px] text-white">Añadir a la bolsa <span class="ml-4">→</span></button></div>
+    </div>
+  </div>
+}
+
+@if (toast()) { <div class="fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 bg-ink px-5 py-3 text-[12px] text-white shadow-lg">{{ toast() }}</div> }

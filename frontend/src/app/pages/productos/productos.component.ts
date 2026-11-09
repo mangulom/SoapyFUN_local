@@ -1,4 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CrudDataService } from '../../core/services/crud-data.service';
@@ -105,6 +107,7 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
                 <th class="py-3.5 px-4 text-center cursor-pointer hover:text-purple-700" (click)="cambiarOrden('stock')">
                   DISPONIBLE {{ iconoOrden('stock') }}
                 </th>
+                <th class="py-3.5 px-4 text-center">VENCE</th>
                 <th class="py-3.5 px-4 text-center">ESTADO</th>
                 <th class="py-3.5 px-4 text-right">ACCIONES</th>
               </tr>
@@ -140,6 +143,7 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
                       <div class="text-[9px] text-amber-600 font-medium">Bajo mínimo ({{ producto.stockMinimo }})</div>
                     }
                   </td>
+                  <td class="py-3 px-4 text-center">{{ producto.fechaVencimiento || '—' }}</td>
                   <td class="py-3 px-4 text-center">
                     <span class="pill" [ngClass]="{
                       'pill-green': producto.estado === 'Publicado',
@@ -226,6 +230,18 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
             />
           </div>
 
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="form-label">Receta para el lote</label><select [(ngModel)]="formRecetaId" name="recetaId" class="form-input bg-white"><option value="">Sin receta asociada</option>@for(receta of dataService.recetas();track receta.id){@if(receta.estado==='Activa'){<option [value]="receta.id">{{receta.nombre}} &middot; curetaje {{formatCure(receta)}} &middot; vencimiento {{receta.tiempoAntesVencimientoDias || receta.vidaUtilDias || 365}} d&iacute;as desde producci&oacute;n</option>}}</select></div>
+            <div><label class="form-label">Fecha de inicio del lote</label><input type="date" [(ngModel)]="formFechaFabricacion" name="fechaFabricacion" class="form-input" /></div>
+          </div>
+          @if (recetaSeleccionada()) {
+            <div class="rounded-xl border border-violet-100 bg-violet-50 p-3 text-xs text-violet-900">
+              <b>Producci&oacute;n prevista:</b> {{ fechaProduccionPrevista() }}
+              <span class="mx-2 text-violet-300">&middot;</span>
+              <b>Vencimiento:</b> {{ fechaVencimientoPrevista() }}
+              <small class="mt-1 block text-violet-700">La producci&oacute;n se libera al terminar el curetaje; el tiempo antes del vencimiento se cuenta desde esa fecha.</small>
+            </div>
+          }
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="form-label">Categoría / Tipo *</label>
@@ -483,6 +499,7 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
 })
 export class ProductosComponent {
   readonly dataService = inject(CrudDataService);
+  private readonly http = inject(HttpClient);
 
   // Filtros y Búsqueda
   filtroTexto = '';
@@ -515,6 +532,8 @@ export class ProductosComponent {
   formAroma = '';
   formTono: Producto['tono'] = 'lavender';
   formBeneficios = '';
+  formRecetaId = '';
+  formFechaFabricacion = new Date().toISOString().slice(0, 10);
 
   readonly margenPromedio = computed(() => {
     const prods = this.dataService.productos();
@@ -614,6 +633,8 @@ export class ProductosComponent {
     this.formAroma = '';
     this.formTono = 'lavender';
     this.formBeneficios = '';
+    this.formRecetaId = '';
+    this.formFechaFabricacion = new Date().toISOString().slice(0, 10);
     this.modalAbierto = true;
   }
 
@@ -631,12 +652,63 @@ export class ProductosComponent {
     this.formAroma = prod.aroma || '';
     this.formTono = prod.tono || 'lavender';
     this.formBeneficios = prod.beneficios || '';
+    this.formRecetaId = prod.recetaId || '';
+    this.formFechaFabricacion = prod.fechaFabricacion || new Date().toISOString().slice(0, 10);
     this.modalAbierto = true;
+  }
+
+  recetaSeleccionada() { return this.dataService.recetas().find((r) => r.id === this.formRecetaId); }
+  fechaProduccionPrevista(): string {
+    const recipe = this.recetaSeleccionada();
+    if (!recipe) return '?';
+    const minutes = recipe.tiempoCuretajeMinutos ?? (recipe.tiempoCuretajeDias || 42) * 1440;
+    return this.addDays(this.formFechaFabricacion, Math.ceil(minutes / 1440));
+  }
+  fechaVencimientoPrevista(): string {
+    const recipe = this.recetaSeleccionada();
+    return recipe ? this.addDays(this.fechaProduccionPrevista(), recipe.tiempoAntesVencimientoDias ?? recipe.vidaUtilDias ?? 365) : '?';
   }
 
   guardarProducto(): void {
     if (!this.formNombre.trim()) return;
 
+    const receta = this.dataService.recetas().find((r) => r.id === this.formRecetaId);
+    const productionDate = receta ? this.addDays(this.formFechaFabricacion, Math.ceil((receta.tiempoCuretajeMinutos ?? (receta.tiempoCuretajeDias || 42) * 1440) / 1440)) : this.formFechaFabricacion;
+    const expiry = receta ? this.addDays(productionDate, receta.tiempoAntesVencimientoDias || receta.vidaUtilDias || 365) : undefined;
+    if (!this.editando && receta) {
+      const bearer = { headers: { Authorization: `Bearer ${localStorage.getItem('soapyfun_token') || ''}` } };
+      this.http.get<Array<{ id: number; code: string; name: string; status: string }>>(`${environment.apiUrl}/api/recetas`, bearer).subscribe({
+        next: (recipes) => {
+          const apiRecipe = recipes.find((item) => item.code === receta.codigo || item.name === receta.nombre);
+          if (!apiRecipe) {
+            this.dataService.notify('error', 'Receta sin sincronizar', 'Guarda la receta en la empresa antes de producir desde la API.');
+            return;
+          }
+          this.http.post<any>(`${environment.apiUrl}/api/productos/producir`, {
+            recipe_id: apiRecipe.id, quantity: 1, manufacture_date: this.formFechaFabricacion,
+            name: this.formNombre.trim(), category: this.formCategoria.trim(), presentation: this.formPresentacion.trim(),
+            price: Number(this.formPrecio), min_stock: Number(this.formStockMinimo), scent: this.formAroma.trim() || null,
+            benefits: this.formBeneficios.trim() || null,
+          }, bearer).subscribe({
+            next: (result) => {
+              const actual = result.product;
+              this.dataService.crearProducto({
+                nombre: actual.name, categoria: actual.category, presentacion: actual.presentation,
+                precio: actual.price, costo: actual.cost, stock: actual.stock, stockMinimo: actual.min_stock,
+                estado: actual.status, aroma: actual.scent || '', beneficios: actual.benefits || '', tono: this.formTono,
+                icono: 'SOAP', recetaId: receta.id, fechaFabricacion: result.production_date,
+                fechaVencimiento: result.expiry_date, vidaUtilDias: result.time_before_expiry_days,
+              });
+              this.modalAbierto = false;
+              this.dataService.notify('success', 'Producci&oacute;n registrada', `Disponible ${result.production_date}; vence ${result.expiry_date}.`);
+            },
+            error: (err) => this.dataService.notify('error', 'No se pudo producir', err?.error?.detail || 'Verifica la API y la receta activa.'),
+          });
+        },
+        error: (err) => this.dataService.notify('error', 'No se pudieron cargar recetas', err?.error?.detail || 'Verifica la sesi&oacute;n y la API.'),
+      });
+      return;
+    }
     if (this.editando) {
       this.dataService.actualizarProducto(this.productoSeleccionadoId, {
         nombre: this.formNombre.trim(),
@@ -650,6 +722,10 @@ export class ProductosComponent {
         aroma: this.formAroma.trim(),
         tono: this.formTono,
         beneficios: this.formBeneficios.trim(),
+        recetaId: this.formRecetaId || undefined,
+        fechaFabricacion: productionDate,
+        fechaVencimiento: expiry,
+        vidaUtilDias: receta?.tiempoAntesVencimientoDias ?? receta?.vidaUtilDias,
       });
     } else {
       this.dataService.crearProducto({
@@ -665,11 +741,19 @@ export class ProductosComponent {
         tono: this.formTono,
         icono: this.formTono === 'honey' ? '☼' : this.formTono === 'citrus' ? '✺' : this.formTono === 'rose' ? '❦' : this.formTono === 'mint' ? '🍃' : '✿',
         beneficios: this.formBeneficios.trim(),
+        recetaId: this.formRecetaId || undefined,
+        fechaFabricacion: productionDate,
+        fechaVencimiento: expiry,
+        vidaUtilDias: receta?.tiempoAntesVencimientoDias ?? receta?.vidaUtilDias,
       });
     }
 
     this.modalAbierto = false;
   }
+
+  formatCure(receta: import('../../core/models/crud.models').Receta): string { const mins=receta.tiempoCuretajeMinutos ?? (receta.tiempoCuretajeDias||42)*1440; return mins%1440===0 ? `${mins/1440} días` : mins%60===0 ? `${mins/60} horas` : `${mins} minutos`; }
+
+  private addDays(date: string, days: number): string { const value = new Date(`${date}T12:00:00`); value.setDate(value.getDate() + days); return value.toISOString().slice(0, 10); }
 
   get mensajeConfirmarEliminar(): string {
     return `¿Estás segura de retirar "${this.productoAEliminar?.nombre || ''}"? Esta acción eliminará su registro de ventas y vitrina.`;

@@ -11,7 +11,8 @@ import {
   Usuario,
 } from '../models/crud.models';
 
-const STORAGE_KEY = 'soapyfun_crud_data_v1';
+const STORAGE_KEY = 'soapyfun_crud_data_v2';
+const companyKey = (): string => { try { return JSON.parse(localStorage.getItem('soapyfun_usuario') || '{}').company_id || 'global'; } catch { return 'global'; } };
 
 export interface ToastMessage {
   id: number;
@@ -99,7 +100,7 @@ export class CrudDataService {
         facturas: this.facturas(),
         usuarios: this.usuarios(),
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      localStorage.setItem(`${STORAGE_KEY}_${companyKey()}`, JSON.stringify(data));
     } catch (e) {
       console.error('Error guardando en localStorage', e);
     }
@@ -108,12 +109,12 @@ export class CrudDataService {
   private cargarDatos(): void {
     if (typeof localStorage !== 'undefined') {
       try {
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const stored = localStorage.getItem(`${STORAGE_KEY}_${companyKey()}`);
         if (stored) {
           const parsed = JSON.parse(stored);
           if (parsed && Array.isArray(parsed.productos)) {
-            this.productos.set(parsed.productos);
-            this.recetas.set(parsed.recetas || []);
+            this.productos.set(parsed.productos.map((p: Producto) => ({ ...p, fechaVencimiento: p.fechaVencimiento ?? (p.recetaId ? this.calcularVencimiento(p.fechaFabricacion || p.fechaCreacion, parsed.recetas || [], p.recetaId) : undefined) })));
+            this.recetas.set((parsed.recetas || []).map((r: Receta) => ({ ...r, tiempoCuretajeDias: r.tiempoCuretajeDias ?? 42, tiempoCuretajeValor: r.tiempoCuretajeValor ?? r.tiempoCuretajeDias ?? 42, tiempoCuretajeUnidad: r.tiempoCuretajeUnidad ?? 'days', tiempoCuretajeMinutos: r.tiempoCuretajeMinutos ?? (r.tiempoCuretajeDias ?? 42) * 1440, tiempoAntesVencimientoDias: r.tiempoAntesVencimientoDias ?? r.vidaUtilDias ?? 365, vidaUtilDias: r.tiempoAntesVencimientoDias ?? r.vidaUtilDias ?? 365 })));
             this.insumos.set(parsed.insumos || []);
             this.compras.set(parsed.compras || []);
             this.proveedores.set(parsed.proveedores || []);
@@ -133,7 +134,7 @@ export class CrudDataService {
 
   restablecerDatosDemo(): void {
     if (typeof localStorage !== 'undefined') {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(`${STORAGE_KEY}_${companyKey()}`);
     }
     this.inicializarSemillas();
     this.notify('info', 'Datos restablecidos', 'Se cargaron los datos de demostración iniciales.');
@@ -141,8 +142,17 @@ export class CrudDataService {
 
   // ================= PRODUCTOS CRUD =================
   crearProducto(prod: Omit<Producto, 'id' | 'codigo' | 'fechaCreacion'>): Producto {
+    const receta = prod.recetaId ? this.recetas().find((r) => r.id === prod.recetaId) : undefined;
+    const fechaInicioLote = prod.fechaFabricacion || new Date().toISOString().slice(0, 10);
+    const cureMinutes = receta?.tiempoCuretajeMinutos ?? (receta?.tiempoCuretajeDias ?? 42) * 1440;
+    const diasCuretaje = Math.ceil(cureMinutes / 1440);
+    const fechaProduccion = receta ? this.sumarDias(fechaInicioLote, diasCuretaje) : fechaInicioLote;
+    const fechaVencimiento = receta ? this.sumarDias(fechaProduccion, receta.tiempoAntesVencimientoDias ?? receta.vidaUtilDias) : prod.fechaVencimiento;
     const nuevo: Producto = {
       ...prod,
+      fechaFabricacion: fechaProduccion,
+      vidaUtilDias: receta?.tiempoAntesVencimientoDias ?? receta?.vidaUtilDias ?? prod.vidaUtilDias,
+      fechaVencimiento,
       id: 'prod_' + Date.now(),
       codigo: 'PRD-' + (this.productos().length + 1).toString().padStart(3, '0'),
       fechaCreacion: new Date().toISOString().slice(0, 10),
@@ -151,6 +161,47 @@ export class CrudDataService {
     this.guardarDatos();
     this.notify('success', 'Producto creado', `"${nuevo.nombre}" añadido al catálogo.`);
     return nuevo;
+  }
+
+  producirDesdeReceta(recetaId: string, cantidadLotes: number, datos: { precio: number; nombre?: string; fechaFabricacion?: string }): Producto | null {
+    const receta = this.recetas().find((item) => item.id === recetaId && item.estado === 'Activa');
+    if (!receta || !Number.isInteger(cantidadLotes) || cantidadLotes < 1) {
+      this.notify('error', 'No se pudo producir', 'Selecciona una receta activa y una cantidad de lotes v?lida.');
+      return null;
+    }
+    const fechaBase = datos.fechaFabricacion || new Date().toISOString().slice(0, 10);
+    const fechaProduccion = this.fechaListaProduccion(fechaBase, receta);
+    const vidaDias = receta.tiempoAntesVencimientoDias ?? receta.vidaUtilDias;
+    const vencimiento = this.sumarDias(fechaProduccion, vidaDias);
+    const barras = receta.barrasEstimadas * cantidadLotes;
+    const producto = this.crearProducto({
+      nombre: datos.nombre?.trim() || receta.nombre,
+      categoria: 'Jab?n artesanal', presentacion: `${receta.barrasEstimadas} unidades por lote`,
+      precio: Number(datos.precio), costo: receta.costoPorBarra, stock: barras, stockMinimo: 5,
+      estado: 'Publicado', aroma: '', beneficios: '', tono: 'lavender', icono: 'S',
+      recetaId: receta.id, fechaFabricacion: fechaProduccion, fechaVencimiento: vencimiento,
+      vidaUtilDias: vidaDias,
+    });
+    this.notify('success', 'Lote producido', `${barras} unidades ? producci?n ${fechaProduccion} despu?s del curetaje ? vencimiento ${vencimiento}.`);
+    return producto;
+  }
+
+  private fechaListaProduccion(fecha: string, receta: Receta): string {
+    const minutes = receta.tiempoCuretajeMinutos ?? (receta.tiempoCuretajeDias ?? 42) * 1440;
+    const days = Math.ceil(Math.max(0, minutes) / 1440);
+    return this.sumarDias(fecha, days);
+  }
+
+  private calcularVencimiento(fecha: string, recetas: Receta[], recetaId: string): string | undefined {
+    const recipe = recetas.find((r) => r.id === recetaId);
+    if (!recipe) return undefined;
+    return this.sumarDias(fecha, recipe.vidaUtilDias ?? 365);
+  }
+
+  private sumarDias(fecha: string, dias: number): string {
+    const result = new Date(`${fecha}T12:00:00`);
+    result.setDate(result.getDate() + Math.max(0, dias || 0));
+    return result.toISOString().slice(0, 10);
   }
 
   actualizarProducto(id: string, cambios: Partial<Producto>): void {
@@ -173,6 +224,8 @@ export class CrudDataService {
     const costoTotalLote = Number((rec.costoPorBarra * rec.barrasEstimadas).toFixed(2));
     const nueva: Receta = {
       ...rec,
+      tiempoCuretajeDias: rec.tiempoCuretajeDias ?? 42,
+      vidaUtilDias: rec.vidaUtilDias ?? 365,
       id: 'rec_' + Date.now(),
       codigo: 'REC-' + (this.recetas().length + 1).toString().padStart(3, '0'),
       costoTotalLote,
@@ -719,6 +772,9 @@ export class CrudDataService {
         concentracionSosa: 32,
         version: 'v3',
         fechaActualizacion: '2026-11-02',
+        tiempoCuretajeDias: 42,
+        tiempoCuretajeValor: 42, tiempoCuretajeUnidad: 'days', tiempoCuretajeMinutos: 60480, tiempoAntesVencimientoDias: 365,
+        vidaUtilDias: 365,
         estado: 'Activa',
         ingredientesCount: 6,
         notasSeguridad: 'Usar gafas de protección y guantes de nitrilo al verter la sosa en agua destilada fría.',
@@ -736,6 +792,9 @@ export class CrudDataService {
         concentracionSosa: 30,
         version: 'v2',
         fechaActualizacion: '2026-10-28',
+        tiempoCuretajeDias: 42,
+        tiempoCuretajeValor: 42, tiempoCuretajeUnidad: 'days', tiempoCuretajeMinutos: 60480, tiempoAntesVencimientoDias: 365,
+        vidaUtilDias: 365,
         estado: 'Activa',
         ingredientesCount: 7,
         notasSeguridad: 'Añadir la miel en traza ligera disuelta en una cucharada de agua tibia para evitar caramelo.',
@@ -753,6 +812,9 @@ export class CrudDataService {
         concentracionSosa: 0,
         version: 'v1',
         fechaActualizacion: '2026-10-20',
+        tiempoCuretajeDias: 2,
+        tiempoCuretajeValor: 2, tiempoCuretajeUnidad: 'days', tiempoCuretajeMinutos: 2880, tiempoAntesVencimientoDias: 365,
+        vidaUtilDias: 365,
         estado: 'Activa',
         ingredientesCount: 4,
         notasSeguridad: 'Fundir a baño maría a máx 60°C para no deshidratar la base de glicerina vegetal.',
@@ -770,6 +832,9 @@ export class CrudDataService {
         concentracionSosa: 33,
         version: 'v1',
         fechaActualizacion: '2026-11-04',
+        tiempoCuretajeDias: 42,
+        tiempoCuretajeValor: 42, tiempoCuretajeUnidad: 'days', tiempoCuretajeMinutos: 60480, tiempoAntesVencimientoDias: 365,
+        vidaUtilDias: 365,
         estado: 'En prueba',
         ingredientesCount: 8,
         notasSeguridad: 'El aceite de rosa mosqueta virgen se agrega exclusivamente en traza para preservar antioxidantes.',

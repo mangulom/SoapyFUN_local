@@ -1,4 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CrudDataService } from '../../core/services/crud-data.service';
@@ -101,6 +103,8 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
                 <th class="py-3.5 px-4 text-right cursor-pointer hover:text-purple-700" (click)="cambiarOrden('costoPorBarra')">
                   COSTO / BARRA {{ iconoOrden('costoPorBarra') }}
                 </th>
+                <th class="py-3.5 px-4 text-center">CURETAJE</th>
+                <th class="py-3.5 px-4 text-center">TIEMPO ANTES DEL VENCIMIENTO (DÍAS)</th>
                 <th class="py-3.5 px-4 text-center">VERSIÓN</th>
                 <th class="py-3.5 px-4 text-center">ESTADO</th>
                 <th class="py-3.5 px-4 text-right">ACCIONES</th>
@@ -127,6 +131,8 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
                     <div class="font-bold text-emerald-600">S/ {{ receta.costoPorBarra.toFixed(2) }}</div>
                     <div class="text-[10px] text-slate-400">Total lote: S/ {{ receta.costoTotalLote.toFixed(2) }}</div>
                   </td>
+                  <td class="py-3 px-4 text-center">{{ formatoCuretaje(receta) }}</td>
+                  <td class="py-3 px-4 text-center">{{ receta.tiempoAntesVencimientoDias || receta.vidaUtilDias || 365 }} días</td>
                   <td class="py-3 px-4 text-center">
                     <span class="font-mono px-2 py-0.5 rounded bg-purple-50 text-purple-700 font-bold text-[10px]">
                       {{ receta.version }}
@@ -143,21 +149,15 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
                   </td>
                   <td class="py-3 px-4 text-right">
                     <div class="flex items-center justify-end gap-1.5">
-                      <button (click)="dataService.duplicarReceta(receta.id)" class="action-btn text-blue-600 hover:bg-blue-50" title="Duplicar para nueva versión">
-                        ⧉
-                      </button>
-                      <button (click)="abrirModalEditar(receta)" class="action-btn text-purple-700 hover:bg-purple-50" title="Editar receta">
-                        ✎
-                      </button>
-                      <button (click)="confirmarEliminar(receta)" class="action-btn text-rose-600 hover:bg-rose-50" title="Eliminar receta">
-                        🗑
-                      </button>
+                      <button (click)="dataService.duplicarReceta(receta.id)" class="action-btn text-blue-600 hover:bg-blue-50" title="Duplicar para nueva versi&oacute;n" aria-label="Duplicar receta"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button>
+                      <button (click)="abrirModalEditar(receta)" class="action-btn text-purple-700 hover:bg-purple-50" title="Editar receta" aria-label="Editar receta"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5 4 4M4 20l4-.8L19 8a2.8 2.8 0 0 0-4-4L4 15z"/></svg></button>
+                      <button (click)="confirmarEliminar(receta)" class="action-btn text-rose-600 hover:bg-rose-50" title="Eliminar receta" aria-label="Eliminar receta"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6m4 4v6m6-6v6"/></svg></button>
                     </div>
                   </td>
                 </tr>
               } @empty {
                 <tr>
-                  <td colspan="8" class="text-center py-12 text-slate-400">
+                  <td colspan="10" class="text-center py-12 text-slate-400">
                     <div class="text-3xl mb-2">📜</div>
                     <div class="font-medium text-sm text-slate-600">No hay recetas registradas con estos filtros</div>
                   </td>
@@ -185,84 +185,58 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
         </div>
       </div>
 
-      <!-- Modal Crear / Editar -->
+      <!-- Modal compartido: igual patrón visual que Productos e Insumos -->
       <soapy-crud-modal
         [isOpen]="modalAbierto"
-        [title]="editando ? 'Editar Receta' : 'Nueva Receta de Jabón'"
-        [subtitle]="'Fórmula botánica con cálculo de lote y costos unitarios'"
-        [eyebrow]="'FORMULACIÓN'"
+        [title]="editando ? 'Editar receta' : 'Nueva receta'"
+        [subtitle]="'Fórmula, producción, curetaje y vencimiento'"
+        [eyebrow]="'RECETAS Y LOTES'"
+        size="lg"
         (close)="modalAbierto = false"
       >
-        <form (ngSubmit)="guardarReceta()" class="space-y-4">
-          <div>
-            <label class="form-label">Nombre de la Receta *</label>
-            <input type="text" [(ngModel)]="formNombre" name="nombre" required placeholder="Ej: Jabón de Arcilla Verde y Carbón" class="form-input" />
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="form-label">Método de Fabricación *</label>
-              <select [(ngModel)]="formMetodo" name="metodo" class="form-input bg-white">
-                <option value="Proceso en frío">Proceso en frío (Cold Process)</option>
-                <option value="Proceso en caliente">Proceso en caliente (Hot Process)</option>
-                <option value="Melt & Pour">Melt & Pour (Base de glicerina)</option>
-                <option value="Jabón líquido KOH">Jabón líquido KOH</option>
-              </select>
+        <form (ngSubmit)="guardarReceta()" class="space-y-5">
+          <section class="form-section">
+            <h4 class="form-section-title">Datos de la receta</h4>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <label class="form-label">Nombre de la receta *<input type="text" [(ngModel)]="formNombre" name="nombre" required maxlength="160" placeholder="Ej.: Jabón de romero" class="form-input" /></label>
+              <label class="form-label">Método de fabricación *<select [(ngModel)]="formMetodo" name="metodo" class="form-input bg-white"><option value="Proceso en frío">Proceso en frío (Cold Process)</option><option value="Proceso en caliente">Proceso en caliente (Hot Process)</option><option value="Melt & Pour">Melt & Pour (base de glicerina)</option><option value="Jabón l&iacute;quido KOH">Jabón l&iacute;quido KOH</option></select></label>
+              <label class="form-label">Versión / identificador *<input type="text" [(ngModel)]="formVersion" name="version" required maxlength="20" placeholder="v1" class="form-input" /></label>
+              <label class="form-label">Estado<select [(ngModel)]="formEstado" name="estado" class="form-input bg-white"><option value="Activa">Activa</option><option value="En prueba">En prueba</option><option value="Archivada">Archivada</option></select></label>
             </div>
-            <div>
-              <label class="form-label">Versión / Identificador *</label>
-              <input type="text" [(ngModel)]="formVersion" name="version" required placeholder="Ej: v1, v2" class="form-input" />
+          </section>
+          <section class="form-section">
+            <h4 class="form-section-title">Tamaño y costo del lote</h4>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <label class="form-label">Peso del lote (g) *<input type="number" min="1" step="1" [(ngModel)]="formLoteGramos" name="loteGramos" required class="form-input" /></label>
+              <label class="form-label">Barras estimadas *<input type="number" min="1" step="1" [(ngModel)]="formBarrasEstimadas" name="barrasEstimadas" required class="form-input" /></label>
+              <label class="form-label">Costo por barra (S/) *<input type="number" min="0" step="0.01" [(ngModel)]="formCostoPorBarra" name="costoPorBarra" required class="form-input" /></label>
             </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="form-label">Peso de Lote (g) *</label>
-              <input type="number" min="100" step="50" [(ngModel)]="formLoteGramos" name="loteGramos" required class="form-input" />
+          </section>
+          <section class="form-section">
+            <h4 class="form-section-title">Curetaje y vencimiento</h4>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label class="form-label">Tiempo de curetaje *</label>
+                <div class="grid grid-cols-[1fr_130px] gap-2">
+                  <input type="number" min="0" step="any" [(ngModel)]="formTiempoCuretaje" name="tiempoCuretaje" required class="form-input" />
+                  <select [(ngModel)]="formUnidadCuretaje" name="unidadCuretaje" class="form-input bg-white"><option value="minutes">Minutos</option><option value="hours">Horas</option><option value="days">D&iacute;as</option></select>
+                </div>
+                <small class="form-help">La fecha de producción se calcula al terminar este tiempo.</small>
+              </div>
+              <label class="form-label">Tiempo antes del vencimiento (días) *<input type="number" min="1" max="3650" step="1" [(ngModel)]="formTiempoAntesVencimiento" name="tiempoAntesVencimiento" required class="form-input" /><small class="form-help">Se cuenta desde la fecha de producción calculada.</small></label>
             </div>
-            <div>
-              <label class="form-label">Barras Estimadas *</label>
-              <input type="number" min="1" [(ngModel)]="formBarrasEstimadas" name="barrasEstimadas" required class="form-input" />
+            <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <label class="form-label">Sobreengrasado (%)<input type="number" min="0" max="25" step="0.1" [(ngModel)]="formSobreengrasado" name="sobreengrasado" class="form-input" /></label>
+              <label class="form-label">Concentraci&oacute;n de sosa (%)<input type="number" min="0" max="50" step="0.1" [(ngModel)]="formConcentracionSosa" name="concentracionSosa" class="form-input" /></label>
             </div>
-            <div>
-              <label class="form-label">Costo por Barra (S/) *</label>
-              <input type="number" min="0.1" step="0.1" [(ngModel)]="formCostoPorBarra" name="costoPorBarra" required class="form-input" />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="form-label">Sobreengrasado (%)</label>
-              <input type="number" min="0" max="25" [(ngModel)]="formSobreengrasado" name="sobreengrasado" class="form-input" />
-            </div>
-            <div>
-              <label class="form-label">Concentración Sosa (%)</label>
-              <input type="number" min="0" max="50" [(ngModel)]="formConcentracionSosa" name="concentracionSosa" class="form-input" />
-            </div>
-            <div>
-              <label class="form-label">Estado de la Receta</label>
-              <select [(ngModel)]="formEstado" name="estado" class="form-input bg-white">
-                <option value="Activa">Activa</option>
-                <option value="En prueba">En prueba</option>
-                <option value="Archivada">Archivada</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label class="form-label">Notas de Seguridad y Preparación</label>
-            <textarea
-              [(ngModel)]="formNotasSeguridad"
-              name="notasSeguridad"
-              rows="3"
-              placeholder="Indica precauciones de seguridad, temperatura de lejía y fase de adición de aromas..."
-              class="form-input"
-            ></textarea>
-          </div>
-
-          <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-100">
+          </section>
+          <section class="form-section">
+            <h4 class="form-section-title">Seguridad y preparaci&oacute;n</h4>
+            <label class="form-label">Notas<textarea [(ngModel)]="formNotasSeguridad" name="notasSeguridad" rows="3" maxlength="4000" placeholder="Precauciones de seguridad, temperaturas y fase de adici&oacute;n de aromas&hellip;" class="form-input"></textarea></label>
+          </section>
+          <div class="flex items-center justify-end gap-3 border-t border-slate-100 pt-4">
             <button type="button" (click)="modalAbierto = false" class="btn-secondary">Cancelar</button>
-            <button type="submit" class="btn-primary">{{ editando ? 'Guardar Cambios' : 'Registrar Receta' }}</button>
+            <button type="submit" class="btn-primary">{{ editando ? 'Guardar cambios' : 'Registrar receta' }}</button>
           </div>
         </form>
       </soapy-crud-modal>
@@ -304,10 +278,14 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
     .form-label { display: block; font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 4px; }
     .form-input { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 8px 12px; font-size: 13px; outline: none; }
     .form-input:focus { border-color: #7c3aed; }
+    .form-section { border: 1px solid #f1f5f9; border-radius: 14px; padding: 14px; }
+    .form-section-title { margin-bottom: 12px; color: #4c1d95; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .form-help { display:block; margin-top:5px; color:#64748b; font-size:10px; line-height:1.45; }
   `]
 })
 export class RecetasComponent {
   readonly dataService = inject(CrudDataService);
+  private readonly http = inject(HttpClient);
 
   filtroTexto = '';
   filtroMetodo = 'Todos';
@@ -335,6 +313,21 @@ export class RecetasComponent {
   formVersion = 'v1';
   formEstado: Receta['estado'] = 'Activa';
   formNotasSeguridad = '';
+  formTiempoCuretaje = 42;
+  formUnidadCuretaje: 'minutes' | 'hours' | 'days' = 'days';
+  formTiempoAntesVencimiento = 365;
+
+  private curetajeMinutos(): number {
+    const factor = this.formUnidadCuretaje === 'minutes' ? 1 : this.formUnidadCuretaje === 'hours' ? 60 : 1440;
+    return Math.round(Number(this.formTiempoCuretaje || 0) * factor);
+  }
+
+  formatoCuretaje(receta: Receta): string {
+    const minutes = receta.tiempoCuretajeMinutos ?? (receta.tiempoCuretajeDias || 42) * 1440;
+    if (minutes > 0 && minutes % 1440 === 0) return `${minutes / 1440} días`;
+    if (minutes > 0 && minutes % 60 === 0) return `${minutes / 60} horas`;
+    return `${minutes} minutos`;
+  }
 
   readonly costoMedioBarra = computed(() => {
     const list = this.dataService.recetas();
@@ -407,6 +400,9 @@ export class RecetasComponent {
     this.formVersion = 'v1';
     this.formEstado = 'Activa';
     this.formNotasSeguridad = '';
+    this.formTiempoCuretaje = 42;
+    this.formUnidadCuretaje = 'days';
+    this.formTiempoAntesVencimiento = 365;
     this.modalAbierto = true;
   }
 
@@ -423,41 +419,59 @@ export class RecetasComponent {
     this.formVersion = rec.version;
     this.formEstado = rec.estado;
     this.formNotasSeguridad = rec.notasSeguridad || '';
+    this.formTiempoCuretaje = rec.tiempoCuretajeValor ?? rec.tiempoCuretajeDias ?? 42;
+    this.formUnidadCuretaje = rec.tiempoCuretajeUnidad ?? 'days';
+    this.formTiempoAntesVencimiento = rec.tiempoAntesVencimientoDias ?? rec.vidaUtilDias ?? 365;
     this.modalAbierto = true;
   }
 
   guardarReceta(): void {
     if (!this.formNombre.trim()) return;
+    const token = localStorage.getItem('soapyfun_token');
+    const options = { headers: { Authorization: `Bearer ${token || ''}` } };
+    this.http.get<Array<{id:number;code:string;name:string}>>(`${environment.apiUrl}/api/recetas`, options).subscribe({
+      next: (recipes) => {
+        const local = this.dataService.recetas().find((r) => r.id === this.recetaSeleccionadaId);
+        const existing = this.editando && local ? recipes.find((r) => r.code === local.codigo) : undefined;
+        const payload = {
+          code: existing?.code || `REC-${Date.now()}`,
+          name: this.formNombre.trim(), method: this.formMetodo, batch_grams: Number(this.formLoteGramos),
+          estimated_bars: Number(this.formBarrasEstimadas), cost_per_bar: Number(this.formCostoPorBarra),
+          total_batch_cost: Number((Number(this.formCostoPorBarra) * Number(this.formBarrasEstimadas)).toFixed(2)),
+          superfat_pct: Number(this.formSobreengrasado), lye_concentration_pct: Number(this.formConcentracionSosa),
+          version: this.formVersion.trim(), status: this.formEstado, safety_notes: this.formNotasSeguridad.trim() || null,
+          cure_time_value: Number(this.formTiempoCuretaje), cure_time_unit: this.formUnidadCuretaje,
+          cure_time_minutes: this.curetajeMinutos(), shelf_life_days: Number(this.formTiempoAntesVencimiento),
+        };
+        const request = existing
+          ? this.http.put<any>(`${environment.apiUrl}/api/recetas/${existing.id}`, payload, options)
+          : this.http.post<any>(`${environment.apiUrl}/api/recetas`, payload, options);
+        request.subscribe({
+          next: (saved) => this.persistirLocal(saved, existing?.id),
+          error: (err) => this.dataService.notify('error', 'No se pudo guardar en la API', err?.error?.detail || 'Verifica sesi&oacute;n y empresa activa.'),
+        });
+      },
+      error: (err) => this.dataService.notify('error', 'No se pudieron cargar las recetas', err?.error?.detail || 'Verifica sesi&oacute;n y conexi&oacute;n.'),
+    });
+  }
 
-    if (this.editando) {
-      this.dataService.actualizarReceta(this.recetaSeleccionadaId, {
-        nombre: this.formNombre.trim(),
-        metodo: this.formMetodo,
-        loteGramos: Number(this.formLoteGramos),
-        barrasEstimadas: Number(this.formBarrasEstimadas),
-        costoPorBarra: Number(this.formCostoPorBarra),
-        sobreengrasado: Number(this.formSobreengrasado),
-        concentracionSosa: Number(this.formConcentracionSosa),
-        version: this.formVersion.trim(),
-        estado: this.formEstado,
-        notasSeguridad: this.formNotasSeguridad.trim(),
-      });
-    } else {
-      this.dataService.crearReceta({
-        nombre: this.formNombre.trim(),
-        metodo: this.formMetodo,
-        loteGramos: Number(this.formLoteGramos),
-        barrasEstimadas: Number(this.formBarrasEstimadas),
-        costoPorBarra: Number(this.formCostoPorBarra),
-        sobreengrasado: Number(this.formSobreengrasado),
-        concentracionSosa: Number(this.formConcentracionSosa),
-        version: this.formVersion.trim(),
-        estado: this.formEstado,
-        ingredientesCount: 5,
-        notasSeguridad: this.formNotasSeguridad.trim(),
-      });
-    }
+  private persistirLocal(saved: any, apiId?: number): void {
+    const localId = this.recetaSeleccionadaId;
+    const changes: Partial<Receta> = {
+      codigo: saved.code,
+      nombre: this.formNombre.trim(), metodo: this.formMetodo,
+      loteGramos: Number(this.formLoteGramos), barrasEstimadas: Number(this.formBarrasEstimadas),
+      costoPorBarra: Number(this.formCostoPorBarra), costoTotalLote: Number((Number(this.formCostoPorBarra) * Number(this.formBarrasEstimadas)).toFixed(2)),
+      sobreengrasado: Number(this.formSobreengrasado), concentracionSosa: Number(this.formConcentracionSosa),
+      version: this.formVersion.trim(), estado: this.formEstado, notasSeguridad: this.formNotasSeguridad.trim(),
+      tiempoCuretajeDias: this.curetajeMinutos() / 1440, tiempoCuretajeValor: Number(this.formTiempoCuretaje),
+      tiempoCuretajeUnidad: this.formUnidadCuretaje, tiempoCuretajeMinutos: this.curetajeMinutos(),
+      tiempoAntesVencimientoDias: Number(this.formTiempoAntesVencimiento), vidaUtilDias: Number(this.formTiempoAntesVencimiento),
+    };
+    if (this.editando) this.dataService.actualizarReceta(localId, changes);
+    else this.dataService.crearReceta({ ...changes, ingredientesCount: 0 } as Omit<Receta, 'id' | 'codigo' | 'fechaActualizacion' | 'costoTotalLote'>);
     this.modalAbierto = false;
+    this.dataService.notify('success', 'Receta guardada', apiId ? `Sincronizada con la API (#${apiId}).` : 'Receta sincronizada con la API.');
   }
 
   get mensajeConfirmarEliminar(): string {
@@ -487,6 +501,8 @@ export class RecetasComponent {
       r.barrasEstimadas,
       r.costoPorBarra.toFixed(2),
       r.costoTotalLote.toFixed(2),
+      r.tiempoCuretajeDias,
+      r.vidaUtilDias,
       r.version,
       r.estado,
     ]);

@@ -159,6 +159,9 @@ import { CrudDataService } from '../../core/services/crud-data.service';
         </article>
       </section>
 
+      @if (currentSection().toLowerCase().includes('ia') || currentSection().toLowerCase().includes('pron') || currentSection().toLowerCase().includes('recomendador') || currentSection().toLowerCase().includes('rentabilidad') || currentSection().toLowerCase().includes('alertas') || currentSection().toLowerCase().includes('copiloto') || currentSection().toLowerCase().includes('lectura') || currentSection().toLowerCase().includes('modelos')) {
+        <a class="mb-5 inline-flex rounded-xl bg-violet-700 px-4 py-2 text-sm font-bold text-white" href="/dashboard/asistente-soapyfun-ai">Abrir centro de IA con an?lisis en tiempo real ?</a>
+      }
       @if (currentSection().toLowerCase().includes('ia') || currentSection().toLowerCase().includes('pronóstico') || currentSection().toLowerCase().includes('recomendador') || currentSection().toLowerCase().includes('rentabilidad') || currentSection().toLowerCase().includes('alertas') || currentSection().toLowerCase().includes('copiloto') || currentSection().toLowerCase().includes('lectura') || currentSection().toLowerCase().includes('modelos')) {
         <section class="ai-console">
           <header>

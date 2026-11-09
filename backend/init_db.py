@@ -14,7 +14,7 @@ from sqlalchemy import select
 sys.path.insert(0, str(Path(__file__).parent))
 
 from app.db import SessionLocal, engine  # noqa: E402
-from app.models import Base, Role, User  # noqa: E402
+from app.models import Base, Company, Role, User  # noqa: E402
 from app.security import hash_password  # noqa: E402
 from app.settings import settings  # noqa: E402
 
@@ -27,12 +27,20 @@ def main() -> None:
         raise SystemExit("Set SECRET_KEY in the local environment before initializing SoapyFUN.")
     name = os.environ.get("ADMIN_NAME", "Rocío Nuñez Kikushima").strip()
     if not email and not password:
-        print("SoapyFUN database schema ready. No admin user requested.")
+        with SessionLocal.begin() as db:
+            if db.scalar(select(Company).where(Company.name == "KIKURELA")) is None:
+                db.add(Company(name="KIKURELA", is_active=True))
+        print("SoapyFUN schema ready; company KIKURELA verified. No admin user requested.")
         return
     if not email or len(password) < 12:
         raise SystemExit("Set ADMIN_EMAIL and ADMIN_PASSWORD (minimum 12 characters) before creating admin.")
 
     with SessionLocal.begin() as db:
+        company = db.scalar(select(Company).where(Company.name == "KIKURELA"))
+        if company is None:
+            company = Company(name="KIKURELA", ruc=None, dni=None, is_active=True)
+            db.add(company)
+            db.flush()
         role = db.scalar(select(Role).where(Role.name == "admin"))
         if role is None:
             role = Role(name="admin")
@@ -40,10 +48,12 @@ def main() -> None:
             db.flush()
         user = db.scalar(select(User).where(User.email == email))
         if user is None:
-            db.add(User(email=email, password_hash=hash_password(password), full_name=name, role_id=role.id))
+            db.add(User(email=email, password_hash=hash_password(password), full_name=name, role_id=role.id, company_id=company.id))
             print("SoapyFUN administrator created; password stored as an Argon2 hash.")
         else:
-            print("SoapyFUN administrator already exists; no changes made.")
+            if user.company_id is None:
+                user.company_id = company.id
+            print("SoapyFUN administrator already exists; company assignment verified.")
 
 
 if __name__ == "__main__":

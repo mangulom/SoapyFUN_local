@@ -1,7 +1,7 @@
-from datetime import datetime
+from datetime import date, datetime
 from typing import Optional
 
-from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text, func
+from sqlalchemy import Boolean, Date, DateTime, Float, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -16,6 +16,20 @@ class Role(Base):
     name: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
 
 
+class Company(Base):
+    __tablename__ = "companies"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    ruc: Mapped[Optional[str]] = mapped_column(String(11), unique=True, nullable=True, index=True)
+    dni: Mapped[Optional[str]] = mapped_column(String(8), nullable=True)
+    address: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    phone: Mapped[Optional[str]] = mapped_column(String(40), nullable=True)
+    email: Mapped[Optional[str]] = mapped_column(String(254), nullable=True)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -25,6 +39,7 @@ class User(Base):
     full_name: Mapped[str] = mapped_column(String(160), nullable=False)
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -45,6 +60,11 @@ class Product(Base):
     benefits: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     icon: Mapped[Optional[str]] = mapped_column(String(10), nullable=True, default="🧼")
     tone: Mapped[Optional[str]] = mapped_column(String(30), nullable=True, default="lavender")
+    manufacture_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
+    expiry_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True, index=True)
+    shelf_life_days: Mapped[int] = mapped_column(Integer, nullable=False, default=365)
+    recipe_id: Mapped[Optional[int]] = mapped_column(ForeignKey("recipes.id"), nullable=True, index=True)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -63,6 +83,10 @@ class Recipe(Base):
     lye_concentration_pct: Mapped[float] = mapped_column(Float, nullable=False, default=30.0)
     version: Mapped[str] = mapped_column(String(20), nullable=False, default="v1")
     status: Mapped[str] = mapped_column(String(30), nullable=False, default="Activa")
+    cure_time_minutes: Mapped[int] = mapped_column(Integer, nullable=False, default=10080)
+    cure_time_days: Mapped[int] = mapped_column(Integer, nullable=False, default=7)
+    shelf_life_days: Mapped[int] = mapped_column(Integer, nullable=False, default=365)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     safety_notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
@@ -80,6 +104,7 @@ class Ingredient(Base):
     unit_cost: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     supplier_name: Mapped[str] = mapped_column(String(160), nullable=False)
     brand: Mapped[Optional[str]] = mapped_column(String(120), nullable=True)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
 
@@ -98,6 +123,7 @@ class Purchase(Base):
     invoice_number: Mapped[Optional[str]] = mapped_column(String(60), nullable=True)
     status: Mapped[str] = mapped_column(String(30), nullable=False, default="Recibida")
     notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -116,6 +142,7 @@ class Supplier(Base):
     total_purchases: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     total_spent: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -132,6 +159,7 @@ class Order(Base):
     status: Mapped[str] = mapped_column(String(40), nullable=False, default="Por preparar")
     delivery_address: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -149,6 +177,7 @@ class Customer(Base):
     total_spent: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     last_order: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
     notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -167,4 +196,5 @@ class Invoice(Base):
     total: Mapped[float] = mapped_column(Float, nullable=False)
     status: Mapped[str] = mapped_column(String(30), nullable=False, default="Pendiente")
     concept: Mapped[str] = mapped_column(String(255), nullable=False)
+    company_id: Mapped[Optional[int]] = mapped_column(ForeignKey("companies.id"), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
